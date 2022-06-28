@@ -5,23 +5,25 @@ import (
 	"github.com/study/common"
 	"github.com/study/component"
 	"github.com/study/modules/restaurant/restaurantbiz"
-	"github.com/study/modules/restaurant/restaurantmodel"
 	"github.com/study/modules/restaurant/restaurantstorage"
 	"net/http"
+	"strconv"
 )
 
-func CreateRestaurant(appCtx component.AppContext) gin.HandlerFunc {
+func GetRestaurant(appCtx component.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var data restaurantmodel.RestaurantCreate
+		id, err := strconv.Atoi(c.Param("id"))
 
-		if err := c.ShouldBind(&data); err != nil {
+		if err != nil {
 			panic(common.ErrInvalidRequest(err))
 		}
 
 		store := restaurantstorage.NewSQLStore(appCtx.GetMainDBConnection())
-		biz := restaurantbiz.NewCreateRestaurantBiz(store)
+		biz := restaurantbiz.NewGetRestaurantBiz(store)
 
-		if err := biz.CreateRestaurant(c.Request.Context(), &data); err != nil {
+		data, err := biz.GetRestaurant(c.Request.Context(), id)
+
+		if err != nil {
 			panic(err)
 		}
 

@@ -8,33 +8,30 @@ import (
 	"github.com/study/modules/restaurant/restaurantmodel"
 	"github.com/study/modules/restaurant/restaurantstorage"
 	"net/http"
+	"strconv"
 )
 
-func ListRestaurant(appCtx component.AppContext) gin.HandlerFunc {
+func UpdateRestaurant(appCtx component.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var filter restaurantmodel.Filter
-
-		if err := c.ShouldBind(&filter); err != nil {
-			panic(common.ErrInvalidRequest(err))
-		}
-
-		var paging common.Paging
-
-		if err := c.ShouldBind(&paging); err != nil {
-			panic(common.ErrInvalidRequest(err))
-		}
-
-		paging.Fulfill()
-
-		store := restaurantstorage.NewSQLStore(appCtx.GetMainDBConnection())
-		biz := restaurantbiz.NewListRestaurantBiz(store)
-
-		result, err := biz.ListRestaurant(c.Request.Context(), &filter, &paging)
+		id, err := strconv.Atoi(c.Param("id"))
 
 		if err != nil {
+			panic(common.ErrInvalidRequest(err))
+		}
+
+		var data restaurantmodel.RestaurantUpdate
+
+		if err := c.ShouldBind(&data); err != nil {
+			panic(common.ErrInvalidRequest(err))
+		}
+
+		store := restaurantstorage.NewSQLStore(appCtx.GetMainDBConnection())
+		biz := restaurantbiz.NewUpdateRestaurantBiz(store)
+
+		if err := biz.UpdateRestaurant(c.Request.Context(), id, &data); err != nil {
 			panic(err)
 		}
 
-		c.JSON(http.StatusOK, common.NewSuccessResponse(result, paging, filter))
+		c.JSON(http.StatusOK, common.SimpleSuccessResponse(true))
 	}
 }
