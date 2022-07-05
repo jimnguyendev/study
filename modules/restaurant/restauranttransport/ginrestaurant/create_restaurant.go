@@ -10,6 +10,7 @@ import (
 	"net/http"
 )
 
+// appCtx => không tăng tham số
 func CreateRestaurant(appCtx component.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var data restaurantmodel.RestaurantCreate

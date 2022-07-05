@@ -11,9 +11,9 @@ func Recover(ac component.AppContext) gin.HandlerFunc {
 		defer func() {
 			if err := recover(); err != nil {
 				c.Header("Content-Type", "application/json")
-
 				if appErr, ok := err.(*common.AppError); ok {
 					c.AbortWithStatusJSON(appErr.StatusCode, appErr)
+					// kích hoạt panicking của gin vì mặc định gin có sẵn recover của riêng nó gin.Default()
 					panic(err)
 					return
 				}

@@ -26,6 +26,7 @@ func (biz *getRestaurantBiz) GetRestaurant(ctx context.Context, id int) (*restau
 	data, err := biz.store.FindDataByCondition(ctx, map[string]interface{}{"id": id})
 
 	if err != nil {
+		// độc lập với lỗi gorm
 		if err != common.RecordNotFound {
 			return nil, common.ErrCannotGetEntity(restaurantmodel.EntityName, err)
 		}
