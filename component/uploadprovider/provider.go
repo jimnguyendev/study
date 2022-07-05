@@ -2,7 +2,7 @@ package uploadprovider
 
 import (
 	"context"
-	"github.com/study/common"
+	"demo/common"
 )
 
 type UploadProvider interface {

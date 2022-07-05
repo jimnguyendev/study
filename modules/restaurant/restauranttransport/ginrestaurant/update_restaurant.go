@@ -1,12 +1,12 @@
 package ginrestaurant
 
 import (
+	"demo/common"
+	"demo/component"
+	"demo/modules/restaurant/restaurantbiz"
+	"demo/modules/restaurant/restaurantmodel"
+	"demo/modules/restaurant/restaurantstorage"
 	"github.com/gin-gonic/gin"
-	"github.com/study/common"
-	"github.com/study/component"
-	"github.com/study/modules/restaurant/restaurantbiz"
-	"github.com/study/modules/restaurant/restaurantmodel"
-	"github.com/study/modules/restaurant/restaurantstorage"
 	"net/http"
 	"strconv"
 )

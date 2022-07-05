@@ -1,7 +1,7 @@
 package restaurantmodel
 
 import (
-	"github.com/study/common"
+	"demo/common"
 	"strings"
 )
 

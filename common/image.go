@@ -18,7 +18,6 @@ type Image struct {
 
 func (Image) TableName() string { return "images" }
 
-// Từ db đi lên phải impl hàm này
 func (j *Image) Scan(value interface{}) error {
 	bytes, ok := value.([]byte)
 	if !ok {
@@ -34,13 +33,11 @@ func (j *Image) Scan(value interface{}) error {
 	return nil
 }
 
-// Muốn đưa môt struct xuống dưới db chúng ta phải impl 1 hàm
 // Value return json value, implement driver.Valuer interface
 func (j *Image) Value() (driver.Value, error) {
 	if j == nil {
 		return nil, nil
 	}
-	// tương đương json endcode => json string bản chất đưa về mảng byte
 	return json.Marshal(j)
 }
 

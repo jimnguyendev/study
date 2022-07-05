@@ -3,10 +3,10 @@ package uploadbusiness
 import (
 	"bytes"
 	"context"
+	"demo/common"
+	"demo/component/uploadprovider"
+	"demo/modules/upload/uploadmodel"
 	"fmt"
-	"github.com/study/common"
-	"github.com/study/common/uploadprovider"
-	"github.com/study/modules/upload/uploadmodel"
 	"image"
 	"io"
 	"log"

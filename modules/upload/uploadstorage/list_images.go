@@ -2,7 +2,7 @@ package uploadstorage
 
 import (
 	"context"
-	"github.com/study/common"
+	"demo/common"
 )
 
 func (store *sqlStore) ListImages(

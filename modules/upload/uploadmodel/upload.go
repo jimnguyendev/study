@@ -1,8 +1,8 @@
 package uploadmodel
 
 import (
+	"demo/common"
 	"errors"
-	"github.com/study/common"
 )
 
 const EntityName = "Upload"

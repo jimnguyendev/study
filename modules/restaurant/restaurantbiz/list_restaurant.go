@@ -2,8 +2,8 @@ package restaurantbiz
 
 import (
 	"context"
-	"github.com/study/common"
-	"github.com/study/modules/restaurant/restaurantmodel"
+	"demo/common"
+	"demo/modules/restaurant/restaurantmodel"
 )
 
 type ListRestaurantStore interface {

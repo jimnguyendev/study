@@ -1,16 +1,15 @@
 package ginrestaurant
 
 import (
+	"demo/common"
+	"demo/component"
+	"demo/modules/restaurant/restaurantbiz"
+	"demo/modules/restaurant/restaurantmodel"
+	"demo/modules/restaurant/restaurantstorage"
 	"github.com/gin-gonic/gin"
-	"github.com/study/common"
-	"github.com/study/component"
-	"github.com/study/modules/restaurant/restaurantbiz"
-	"github.com/study/modules/restaurant/restaurantmodel"
-	"github.com/study/modules/restaurant/restaurantstorage"
 	"net/http"
 )
 
-// appCtx => không tăng tham số
 func CreateRestaurant(appCtx component.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var data restaurantmodel.RestaurantCreate

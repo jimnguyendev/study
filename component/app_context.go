@@ -1,7 +1,7 @@
 package component
 
 import (
-	"github.com/study/common/uploadprovider"
+	"demo/component/uploadprovider"
 	"gorm.io/gorm"
 )
 

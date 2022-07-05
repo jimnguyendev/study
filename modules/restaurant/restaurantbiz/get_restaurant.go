@@ -2,8 +2,8 @@ package restaurantbiz
 
 import (
 	"context"
-	"github.com/study/common"
-	"github.com/study/modules/restaurant/restaurantmodel"
+	"demo/common"
+	"demo/modules/restaurant/restaurantmodel"
 )
 
 type GetRestaurantStore interface {
@@ -26,7 +26,6 @@ func (biz *getRestaurantBiz) GetRestaurant(ctx context.Context, id int) (*restau
 	data, err := biz.store.FindDataByCondition(ctx, map[string]interface{}{"id": id})
 
 	if err != nil {
-		// độc lập với lỗi gorm
 		if err != common.RecordNotFound {
 			return nil, common.ErrCannotGetEntity(restaurantmodel.EntityName, err)
 		}

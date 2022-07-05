@@ -1,16 +1,18 @@
 package ginupload
 
 import (
+	"demo/common"
+	"demo/component"
+	"demo/modules/upload/uploadbusiness"
 	"github.com/gin-gonic/gin"
-	"github.com/study/common"
-	"github.com/study/component"
-	"github.com/study/modules/upload/uploadbusiness"
 	_ "image/jpeg"
 	_ "image/png"
 )
 
 func Upload(appCtx component.AppContext) func(*gin.Context) {
 	return func(c *gin.Context) {
+		//db := appCtx.GetMainDBConnection()
+
 		fileHeader, err := c.FormFile("file")
 
 		if err != nil {

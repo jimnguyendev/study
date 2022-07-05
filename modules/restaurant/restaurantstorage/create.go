@@ -2,8 +2,8 @@ package restaurantstorage
 
 import (
 	"context"
-	"github.com/study/common"
-	"github.com/study/modules/restaurant/restaurantmodel"
+	"demo/common"
+	"demo/modules/restaurant/restaurantmodel"
 )
 
 func (s *sqlStore) Create(ctx context.Context, data *restaurantmodel.RestaurantCreate) error {
